@@ -3,20 +3,20 @@
 
     $blog_posts=[
         [
-            'title'=>'First php Blog',
-            'content'=>'This is my first time creating a php blog. It\'s pretty cool!',
+            'title'=>'First PHP Blog',
+            'content'=>'This is my first time creating a PHP blog. It\'s pretty cool!',
             'author'=>'Emery Frondorf',
             'date'=>'9/16/2024'
         ],
         [
-            'title'=>'Second php Blog',
-            'content'=>'This is my first time creating a php blog. It\'s pretty cool!',
+            'title'=>'Second PHP Blog',
+            'content'=>'This is my first time creating a PHP blog. It\'s pretty cool!',
             'author'=>'Logan Watts',
             'date'=>'9/16/2024'
         ],
         [
-            'title'=>'Third php Blog',
-            'content'=>'This is my first time creating a php blog. It\'s pretty cool!',
+            'title'=>'Third PHP Blog',
+            'content'=>'This is my first time creating a PHP blog. It\'s pretty cool!',
             'author'=>'David-Michael Davies',
             'date'=>'9/16/2024'
         ]
@@ -35,7 +35,12 @@
     }
     
 ?>
-
+<script src="../bootstrap-5.3.3-dist/css/bootstrap-grid.css"></script>
+<style>
+	body{
+		font-family:Arial, Helvetica, sans-serif ;
+	}
+</style>
 <html>
     <title><?=$blog_posts[$i]['title']?></title>
     <body>
@@ -44,6 +49,8 @@
             displayPost($blog_posts[$i]);
         ?>
         </div>
-
+        <div>
+            <a class='button' href='index.php'>Go Back</a>
+        </div>
     </body>
 </html>
