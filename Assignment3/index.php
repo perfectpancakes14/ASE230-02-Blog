@@ -1,25 +1,17 @@
 <?php
 
-$blog_posts=[
-	[
-		'title'=>'First PHP Blog',
-		'content'=>'This is my first time creating a PHP blog. It\'s pretty cool\!',
-		'author'=>'Emery Frondorf',
-		'date'=>'9/16/2024'
-	],
-	[
-		'title'=>'Second PHP Blog',
-		'content'=>'This is my first time creating a PHP blog. It\'s pretty cool\!',
-		'author'=>'Logan Watts',
-		'date'=>'9/16/2024'
-	],
-	[
-		'title'=>'Third PHP Blog',
-		'content'=>'This is my first time creating a PHP blog. It\'s pretty cool\!',
-		'author'=>'David-Michael Davies',
-		'date'=>'9/16/2024'
-	]
-]
+
+
+function displayTitles($file)
+    {
+        $content=file_get_contents($file);
+        $php_array=json_decode($content,true);
+		for($i=0; $i<count($php_array); $i++)
+		{
+			echo "<h1><a href=detail.php?post_id=".$i.">".$php_array[$i]['title']."</a></h1>";
+		}
+        
+    }
 ?>
 <html>
 <head>
@@ -34,8 +26,7 @@ $blog_posts=[
 </style>
 <body>
 	<?php
-	for($i=0;$i<count($blog_posts);$i++) {?>
-		<h1><a href="detail.php?post_id=<?= $i ?>"><?= $blog_posts[$i]['title']?></a></h1>
-	<?php }?>
+	displayTitles('posts.json');
+	?>
 </body>
 </html>

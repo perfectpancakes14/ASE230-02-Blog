@@ -1,37 +1,17 @@
 <?php
     $i = $_GET['post_id'];
 
-    $blog_posts=[
-        [
-            'title'=>'First PHP Blog',
-            'content'=>'This is my first time creating a PHP blog. It\'s pretty cool!',
-            'author'=>'Emery Frondorf',
-            'date'=>'9/16/2024'
-        ],
-        [
-            'title'=>'Second PHP Blog',
-            'content'=>'This is my first time creating a PHP blog. It\'s pretty cool!',
-            'author'=>'Logan Watts',
-            'date'=>'9/16/2024'
-        ],
-        [
-            'title'=>'Third PHP Blog',
-            'content'=>'This is my first time creating a PHP blog. It\'s pretty cool!',
-            'author'=>'David-Michael Davies',
-            'date'=>'9/16/2024'
-        ]
-    ];
+    
 
 
-    function displayPost($post)
+    function displayPost($file, $post_id)
     {
-        /*foreach($post as $line)
-        {
-            echo $line.'<br/>';
-        }*/
-        echo '<h1>'.$post['title'].'</h1>';
-        echo '<h4>Authored by '.$post['author'].' on '.$post['date'].'</h4>';
-        echo '<p>'.$post['content'].'</p>';
+        $content=file_get_contents($file);
+        $php_array=json_decode($content,true);
+        echo '<title>'.$php_array[$post_id]['title'].'</title>';
+        echo '<h1>'.$php_array[$post_id]['title'].'</h1>';
+        echo '<h4>Authored by '.$php_array[$post_id]['author'].' on '.$php_array[$post_id]['date'].'</h4>';
+        echo '<p>'.$php_array[$post_id]['content'].'</p>';
     }
     
 ?>
@@ -42,11 +22,11 @@
 	}
 </style>
 <html>
-    <title><?=$blog_posts[$i]['title']?></title>
+    
     <body>
         <div>
         <?php
-            displayPost($blog_posts[$i]);
+            displayPost('posts.json',$i);
         ?>
         </div>
         <div>
