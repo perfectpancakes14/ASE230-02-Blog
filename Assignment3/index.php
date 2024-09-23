@@ -1,7 +1,5 @@
 <?php
 
-
-
 function displayTitles($file)
     {
         $content=file_get_contents($file);
